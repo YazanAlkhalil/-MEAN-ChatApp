@@ -1,0 +1,11 @@
+.select {
+  position: relative;
+}
+.select:after {
+  content: url("../../../../public/assets/images/Icon.svg");
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}

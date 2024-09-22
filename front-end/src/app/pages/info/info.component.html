@@ -1,0 +1,114 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
+  <!-- <Dialog isLogin={false} isOpen={isOpen} onClose={handleClose}>
+ <p>{error}</p> -->
+  <!-- </Dialog>  -->
+  <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+    <div class="flex justify-center mb-4">
+      <div class="relative">
+        @if(imageData){
+        <img [src]="imageData" alt="selected" class="w-24 h-24 rounded-full" />
+        } @else {
+        <img src="assets/images/person.png"
+          alt="person"
+          class="w-24 h-24 rounded-full"
+        />
+        }
+        <div class="relative">
+          <label
+            title="Click to upload"
+            for="button2"
+            class="cursor-pointer flex items-center gap-4"
+          >
+            <div class="absolute bottom-0 right-0 bg-teal-500  p-2 rounded-full">
+              <img src="assets/images/pencil.svg" alt="" class="w-4 h-4">
+            </div>
+          </label>
+          <input
+            class="hidden"
+            type="file"
+            id="button2"
+            name="button2"
+            (change)="handleFileInput($event)"
+          />
+        </div>
+      </div>
+    </div>
+    <form
+      [formGroup]="registerForm"
+      class="space-y-4 flex flex-col"
+      (ngSubmit)="onSubmit()"
+    >
+      <div>
+        <input
+          formControlName="fullName"
+          type="text"
+          placeholder="Full name"
+          class="w-full px-4 py-3 my-1 border border-gray rounded-2xl focus:outline-none focus:ring-2 focus: ring-teal-500"
+        />
+      </div>
+      <div>
+        <input
+          formControlName="password"
+          type="password"
+          placeholder="Password"
+          class="w-full px-4 py-3 my-1 border border-gray rounded-2xl focus:outline-none focus:ring-2 focus: ring-teal-500"
+        />
+      </div>
+      <div>
+        <input
+          formControlName="email"
+          type="email"
+          placeholder="name@example.com"
+          class="w-full px-4 py-3 my-1 border border-gray rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500"
+        />
+      </div>
+
+      <div>
+        <input
+          [type]="inputType"
+          (focus)="handleFocus()"
+          (blur)="handleBlur()"
+          placeholder="Birth Of Date"
+          class="w-full px-4 py-3 my-1 border border-gray rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray"
+        />
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="relative select">
+          <select
+            formControlName="city"
+            class="select w-full px-4 py-2 my-1 border appearance-none border-gray rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray hover:cursor-pointer"
+          >
+            <option value="">City</option>
+            <option>Damascus</option>
+            <option>Daraa</option>
+          </select>
+        </div>
+        <div class="relative select">
+          <select
+            formControlName="area"
+            class="w-full px-4 py-2 my-1 border appearance-none border-gray rounded-2xl focus:outline-none focus:ring-2 focus:ring-teal-500 text-gray hover:cursor-pointer"
+          >
+            <option value="">Area</option>
+            <option>Baramkeh</option>
+            <option>khabab</option>
+          </select>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="bg-teal-500 text-white py-2 rounded-lg self-center hover:bg-teal-600 w-full duration-300 text-xl"
+      >
+        Sign In
+      </button>
+    </form>
+    <div class="mt-2 w-[70%] mx-auto">
+      <span class="my-2">already have an account? </span>
+      <a
+        routerLink="/login"
+        class="text-teal-500 text-xl hover:text-teal-400 duration-300"
+      >
+        Login
+      </a>
+    </div>
+  </div>
+</div>
