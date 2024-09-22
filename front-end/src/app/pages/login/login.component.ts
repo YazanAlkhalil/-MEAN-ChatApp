@@ -13,7 +13,8 @@ import Parse from 'parse';
 })
 export class LoginComponent {
   loginForm!: FormGroup
-  isOpen: boolean = false
+  isOpen!: boolean
+  error!: string 
 
   constructor(private router:Router){
     this.loginForm = new FormGroup({
@@ -24,10 +25,11 @@ export class LoginComponent {
 
   onSubmit(){
       Parse.User.logIn(this.loginForm.value.username , this.loginForm.value.password).then((user) => {
-        alert('Welcome To Home Page')
-      }).catch((error) => {
+        alert(`Welcome To Home ${user.getUsername()}`)
+      }).catch((error: Error) => {
+        this.error = error.message
         if(this.loginForm.invalid || error){
-          this.isOpen = true
+          this.isOpen = !this.isOpen
         }
       })
       this.isOpen = false

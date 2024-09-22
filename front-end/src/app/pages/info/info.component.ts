@@ -29,7 +29,7 @@ export class InfoComponent {
   inputType: string = '';
   image: any;
   error!: string;
-  isOpen: boolean = false
+  isOpen!: boolean 
   constructor() {
     this.registerForm = new FormGroup({
       imageData: new FormControl(''),
@@ -63,13 +63,14 @@ export class InfoComponent {
       .catch((error:Error) => {
         this.error = error.message
         console.log(error , 'parse_error');
-        
         if(this.registerForm.invalid || error){
           this.isOpen = true
         }
       });
-      this.isOpen = !this.isOpen
-  }
+      // this.isOpen = false
+      // console.log(this.isOpen , 'isOpen');
+      
+    }
 
   handleFileInput(event: Event) {
     const fileInput = event.target as HTMLInputElement;

@@ -18,6 +18,6 @@ export class DialogComponent {
   constructor( private router:Router ){}
   
     handleClose(){
-    return  this.isOpen = !this.isOpen
+    return  this.isOpen = false
     }
 }
