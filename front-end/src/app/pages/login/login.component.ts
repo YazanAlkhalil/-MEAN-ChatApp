@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink, } from '@angular/router';
 import { DialogComponent } from '../../components/dialog/dialog.component';
@@ -15,13 +15,16 @@ export class LoginComponent {
   loginForm!: FormGroup
   isOpen: boolean = false
 
-  constructor(private router:Router){
+  constructor(private router:Router,private cd:ChangeDetectorRef){
     this.loginForm = new FormGroup({
       username: new FormControl( '' , Validators.required ),
       password: new FormControl('' , Validators.required)
     })
   }
-
+  closeDialog() {
+    this.isOpen = false;
+    this.cd.markForCheck();
+  }
   onSubmit(){
       Parse.User.logIn(this.loginForm.value.username , this.loginForm.value.password).then((user) => {
         alert('Welcome To Home Page')

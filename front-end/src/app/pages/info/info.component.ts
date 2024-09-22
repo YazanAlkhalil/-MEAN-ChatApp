@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -30,7 +30,9 @@ export class InfoComponent {
   image: any;
   error!: string;
   isOpen: boolean = false
-  constructor() {
+  constructor(
+    private cd:ChangeDetectorRef
+  ) {
     this.registerForm = new FormGroup({
       imageData: new FormControl(''),
       fullName: new FormControl('', Validators.required),
@@ -49,6 +51,7 @@ export class InfoComponent {
   }
   onSubmit() {
     console.log('data', this.registerForm.value);
+    Parse.User.logOut()
     const user = new Parse.User();
     user.set('username', this.registerForm.value.fullName);
     user.set('password', this.registerForm.value.password);
@@ -65,12 +68,17 @@ export class InfoComponent {
         console.log(error , 'parse_error');
         
         if(this.registerForm.invalid || error){
-          this.isOpen = true
+          
+          this.isOpen = true;
+          console.log(this.isOpen, 'isOpen');
+          this.cd.markForCheck()
         }
       });
-      this.isOpen = !this.isOpen
   }
-
+  closeDialog() {
+    this.isOpen = false;
+    this.cd.markForCheck();
+  }
   handleFileInput(event: Event) {
     const fileInput = event.target as HTMLInputElement;
     const file = fileInput.files && fileInput.files[0];

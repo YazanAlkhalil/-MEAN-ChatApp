@@ -1,5 +1,5 @@
 <div>
-  <app-dialog class=" w-[50%] fixed top-0 left-[25%]  " [isOpen]="isOpen">
+  <app-dialog class=" w-[50%] fixed top-0 left-[25%]  " [isOpen]="isOpen" (close)="closeDialog()">
     <p class="text-lg text-gray-500"> Invalid Username or Password! </p>
   </app-dialog>
   <div

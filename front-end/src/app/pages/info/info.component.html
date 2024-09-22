@@ -1,5 +1,6 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-  <app-dialog class=" z-10 w-[50%] fixed top-0 left-[25%]  " [isOpen]="isOpen">
+  <app-dialog class=" z-10 w-[50%] fixed top-0 left-[25%]" [isOpen]="isOpen" 
+  (close)="closeDialog()">
     <p class="text-lg text-gray-500"> {{error}} </p>
   </app-dialog>
   <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
