@@ -2,16 +2,13 @@
   <div class="relative max-h-full w-full max-w-2xl mx-auto p-4 md:p-6 lg:p-8">
     <div class="bg-[#eee] rounded-lg shadow-md">
       <div class="flex items-start justify-center p-4 border-b">
-        <h3 class="text-xl font-semibold text-gray-900">{{ children }}</h3>
+        <ng-content ></ng-content>
       </div>
       <div class="flex justify-center gap-2">
         <button
           class="bg-red-500 text-white p-2 m-2 rounded-md hover:bg-red-700  hover:text-gray-900 dark:hover:text-white transition duration-300"
           (click)="handleClose()">
           try again
-        </button>
-        <button *ngIf="isLogin" class="bg-green-500 text-white p-2 m-2 rounded-md hover:bg-green-700" (click)="navigateToInfo()">
-          Register
         </button>
       </div>
     </div>

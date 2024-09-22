@@ -1,12 +1,12 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100 p-4">
-  <!-- <Dialog isLogin={false} isOpen={isOpen} onClose={handleClose}>
- <p>{error}</p> -->
-  <!-- </Dialog>  -->
+  <app-dialog class=" z-10 w-[50%] fixed top-0 left-[25%]  " [isOpen]="isOpen">
+    <p class="text-lg text-gray-500"> {{error}} </p>
+  </app-dialog>
   <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
     <div class="flex justify-center mb-4">
       <div class="relative">
-        @if(imageData){
-        <img [src]="imageData" alt="selected" class="w-24 h-24 rounded-full" />
+        @if(image){
+        <img [src]="image" alt="selected" class="w-24 h-24 rounded-full" />
         } @else {
         <img src="assets/images/person.png"
           alt="person"
@@ -23,13 +23,7 @@
               <img src="assets/images/pencil.svg" alt="" class="w-4 h-4">
             </div>
           </label>
-          <input
-            class="hidden"
-            type="file"
-            id="button2"
-            name="button2"
-            (change)="handleFileInput($event)"
-          />
+          
         </div>
       </div>
     </div>
@@ -38,6 +32,16 @@
       class="space-y-4 flex flex-col"
       (ngSubmit)="onSubmit()"
     >
+    <div>
+      <input
+          formControlName="imageData"
+            class="hidden"
+            type="file"
+            id="button2"
+            name="button2"
+            (change)="handleFileInput($event)"
+          />
+    </div>
       <div>
         <input
           formControlName="fullName"
@@ -65,6 +69,7 @@
 
       <div>
         <input
+        formControlName="birthDate"
           [type]="inputType"
           (focus)="handleFocus()"
           (blur)="handleBlur()"

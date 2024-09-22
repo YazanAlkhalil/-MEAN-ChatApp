@@ -11,19 +11,11 @@ import { Router } from '@angular/router';
 })
 export class DialogComponent {
 
-
-  @Input() isLogin!: boolean;
   @Input() isOpen!: boolean;
   @Input() onClose :boolean = this.handleClose()
-  @Input() children !:string
   
 
   constructor( private router:Router ){}
-
-
-  navigateToInfo() {
-    this.router.navigate(['/info']);
-  }
   
     handleClose(){
     return  this.isOpen = !this.isOpen

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink, } from '@angular/router';
 import { DialogComponent } from '../../components/dialog/dialog.component';
 import Parse from 'parse';
 
@@ -13,8 +13,9 @@ import Parse from 'parse';
 })
 export class LoginComponent {
   loginForm!: FormGroup
-  
-  constructor(){
+  isOpen: boolean = false
+
+  constructor(private router:Router){
     this.loginForm = new FormGroup({
       username: new FormControl( '' , Validators.required ),
       password: new FormControl('' , Validators.required)
@@ -22,11 +23,15 @@ export class LoginComponent {
   }
 
   onSubmit(){
-    Parse.User.logIn(this.loginForm.value.username , this.loginForm.value.password).then((user) => {
-      console.log(user);
-    }).catch((error) => {
-      console.log(error);
-    })
+      Parse.User.logIn(this.loginForm.value.username , this.loginForm.value.password).then((user) => {
+        alert('Welcome To Home Page')
+      }).catch((error) => {
+        if(this.loginForm.invalid || error){
+          this.isOpen = true
+        }
+      })
+      this.isOpen = false
+    // this.router.navigateByUrl('/home')
   }
   
 }

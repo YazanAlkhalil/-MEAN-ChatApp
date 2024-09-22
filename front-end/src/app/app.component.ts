@@ -11,7 +11,7 @@ import { BackendServiceService } from './services/backend-service.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Signal';
+  title = 'Chat_App';
   constructor(private backendService: BackendServiceService){}
   
 
