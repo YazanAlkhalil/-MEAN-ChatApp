@@ -1,8 +1,8 @@
-import { ParseSourceFile } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { DialogComponent } from '../../components/dialog/dialog.component';
+import Parse from 'parse';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,11 @@ export class LoginComponent {
   }
 
   onSubmit(){
-    console.log( 'Login Form', this.loginForm.value);
+    Parse.User.logIn(this.loginForm.value.username , this.loginForm.value.password).then((user) => {
+      console.log(user);
+    }).catch((error) => {
+      console.log(error);
+    })
   }
   
 }

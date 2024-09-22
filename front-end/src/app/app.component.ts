@@ -2,6 +2,7 @@ import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { InfoComponent } from './pages/info/info.component';
+import { BackendServiceService } from './services/backend-service.service';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -11,6 +12,7 @@ import { InfoComponent } from './pages/info/info.component';
 })
 export class AppComponent {
   title = 'Signal';
+  constructor(private backendService: BackendServiceService){}
   
 
 }
