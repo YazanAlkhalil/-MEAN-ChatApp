@@ -1,0 +1,23 @@
+{
+  "devDependencies": {
+    "@types/node": "20.8.2",
+    "gts": "^5.2.0",
+    "typescript": "~5.2.0"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "start": "rimraf build/src/cloudCode && rimraf build/src/app.js  && tsc && node --max-old-space-size=1024 ./build/src/app.js"
+  },
+  "dependencies": {
+    "@types/parse": "^3.0.9",
+    "axios": "^1.6.7",
+    "cors": "*",
+    "dotenv": "^16.4.1",
+    "express": "*",
+    "parse": "^5.1.0",
+    "parse-server": "^7.0.0",
+    "rimraf": "^5.0.5",
+    "winston": "^3.11.0",
+    "winston-daily-rotate-file": "^4.7.1"
+  }
+}
