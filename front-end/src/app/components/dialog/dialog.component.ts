@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,13 +11,10 @@ import { Router } from '@angular/router';
 })
 export class DialogComponent {
 
-  @Input() isOpen!: boolean;
-  @Input() onClose :boolean = this.handleClose()
-  
+  @Input() isOpen = false;
+  @Output() close = new EventEmitter<void>();
 
-  constructor( private router:Router ){}
-  
-    handleClose(){
-    return  this.isOpen = false
-    }
+  handleClose() {
+    this.close.emit();
+  }
 }
