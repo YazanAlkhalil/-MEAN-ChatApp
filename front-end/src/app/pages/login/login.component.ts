@@ -34,7 +34,6 @@ export class LoginComponent {
         }
       })
       this.isOpen = false
-    // this.router.navigateByUrl('/home')
   }
   
 }
