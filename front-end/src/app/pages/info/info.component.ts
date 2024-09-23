@@ -46,9 +46,6 @@ export class InfoComponent {
       area: new FormControl('', Validators.required),
     });
   }
-  ngOnInit() {
-    console.log('any thing!');
-  }
   onSubmit() {
     console.log('data', this.registerForm.value);
     Parse.User.logOut()
@@ -62,7 +59,7 @@ export class InfoComponent {
     user.set('img', this.image);
     user
       .signUp()
-      .then((user) => console.log(user, 'user'))
+      .then((user) => alert(`Welcome To Our App ${user.getUsername()}`))
       .catch((error:Error) => {
         this.error = error.message
         console.log(error , 'parse_error');
