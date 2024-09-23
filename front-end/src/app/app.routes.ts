@@ -15,6 +15,12 @@ export const routes: Routes = [
       .then( m => m.InfoComponent )
   },
   {
+    path:'main',
+    loadComponent: () => import(
+      './pages/main-page/main-page.component')
+      .then( m => m.MainPageComponent )
+  },
+  {
     path:'',
     pathMatch:'full',
     redirectTo:'login'

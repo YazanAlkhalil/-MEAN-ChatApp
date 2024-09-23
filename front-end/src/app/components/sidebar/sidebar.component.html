@@ -1,1 +1,21 @@
-<p>sidebar works!</p>
+<div class="py-2 px-6 h-screen flex flex-col">
+
+    <div class="flex justify-between mb-14 mt-10">
+        <h1 class="text-3xl">Chats</h1>
+        <div class="flex gap-2 items-center">
+            <img src="assets/images/Component 2.svg" height="24px" width="24px" />
+            <img src="assets/images/menu.svg" height="24px" width="24px" />
+        </div>
+    </div>
+    <label class="input py-3 mb-5 input-bordered flex items-center gap-2">
+        <input type="text" class="grow" placeholder="Search" />
+        <img src="assets/images/search-normal.svg" height="24px" width="24px" />
+    </label>
+    
+    <div class="overflow-y-auto">
+
+        <ng-container *ngFor="let conversation of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+            <app-conversation></app-conversation>
+        </ng-container>
+    </div>
+</div>

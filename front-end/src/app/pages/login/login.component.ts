@@ -19,7 +19,7 @@ export class LoginComponent {
   constructor(private router:Router,private cd:ChangeDetectorRef){
     this.loginForm = new FormGroup({
       username: new FormControl( '' , Validators.required ),
-      password: new FormControl('' , Validators.required)
+      password: new FormControl('' , [Validators.required,Validators.minLength(6)])
     })
   }
   closeDialog() {
@@ -28,7 +28,7 @@ export class LoginComponent {
   }
   onSubmit(){
       Parse.User.logIn(this.loginForm.value.username , this.loginForm.value.password).then((user) => {
-        alert(`Welcome To Home ${user.getUsername()}`)
+        this.router.navigateByUrl('main')
       }).catch((error: Error) => {
         this.error = error.message
         if(this.loginForm.invalid || error){
