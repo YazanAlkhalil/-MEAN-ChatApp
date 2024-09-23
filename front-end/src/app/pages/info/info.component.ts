@@ -66,7 +66,6 @@ export class InfoComponent {
       .catch((error:Error) => {
         this.error = error.message
         console.log(error , 'parse_error');
-        
         if(this.registerForm.invalid || error){
           
           this.isOpen = true;
